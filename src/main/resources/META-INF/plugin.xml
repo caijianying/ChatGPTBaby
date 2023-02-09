@@ -1,0 +1,30 @@
+<idea-plugin>
+    <id>com.xiaobaicai</id>
+    <name>ChatGPTBaby</name>
+    <vendor url="https://blog.caijy.top/" email="XiaoBaiCai5811@163.com"/>
+
+    <description><![CDATA[
+        This is a lightweight Idea plug-in that operate json.
+        <br/>
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable parentId="tools" instance="com.xiaobaicai.config.ChatGPTConfig"
+                                 id="com.xiaobaicai.config.ChatGPTConfig"
+                                 displayName="ChatGPTBaby"/>
+        <!--数据持久化扩展点-->
+        <applicationService serviceImplementation="com.xiaobaicai.cache.ChatGPTCache"/>
+        <toolWindow id="chatGpt" anchor="right" factoryClass="com.xiaobaicai.extension.ChatGPTToolsWindow"/>
+    </extensions>
+
+
+    <actions>
+
+    </actions>
+
+</idea-plugin>
