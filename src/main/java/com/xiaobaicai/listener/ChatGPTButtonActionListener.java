@@ -10,10 +10,12 @@ import javax.swing.*;
 import com.alibaba.fastjson.JSON;
 
 import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.http.HttpException;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import com.xiaobaicai.cache.ChatGPTCache;
+import com.xiaobaicai.model.ErrorModel;
 import com.xiaobaicai.model.TextCompletionModel;
 import com.xiaobaicai.model.TextCompletionModel.Choice;
 import com.xiaobaicai.toolwindow.ChatGPTWindow;
@@ -48,15 +50,23 @@ public class ChatGPTButtonActionListener extends AbstractAction {
             + "  \"temperature\": 0,\n"
             + "  \"max_tokens\": 1000\n"
             + "}";
-        HttpResponse execute = post.auth(String.format("Bearer %s", ChatGPTCache.getInstance().openAiAuthKey)).body(
-            String.format(bodyTpls, originalText)).execute();
+        HttpResponse execute;
+        try {
+             execute = post.timeout(10_000).auth(String.format("Bearer %s", ChatGPTCache.getInstance().openAiAuthKey)).body(
+                String.format(bodyTpls, originalText)).execute();
+        }catch (HttpException ex){
+            MessageUtil.error("请求服务器失败！");
+            return;
+        }
+
         if (execute.isOk()) {
             TextCompletionModel model = JSON.parseObject(execute.body(), TextCompletionModel.class);
             List<Choice> choices = model.getChoices();
-            window.getTranslateTextArea().setText(CollectionUtil.isEmpty(choices) ? "" : choices.get(0).getText());
+            window.getAnwserTextArea().setText(CollectionUtil.isEmpty(choices) ? "" : choices.get(0).getText());
         } else {
-            window.getTranslateTextArea().setText("GPT cannot understand you, try again!");
+            ErrorModel model = JSON.parseObject(execute.body(), ErrorModel.class);
+            window.getAnwserTextArea().setText(model.getMessage());
         }
-
     }
+
 }

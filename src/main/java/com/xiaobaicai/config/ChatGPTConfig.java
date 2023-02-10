@@ -4,11 +4,8 @@ import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.*;
-
-import com.alibaba.fastjson.JSON;
 
 import com.google.common.collect.Lists;
 import com.intellij.openapi.options.Configurable;
@@ -51,7 +48,7 @@ public class ChatGPTConfig implements Configurable {
         configItems.stream().forEach(rowModel -> {
             // 拿到各个命令的展示信息
             // 1. 设置命令行
-            JLabel command = new JLabel(rowModel.getLabel());
+            JLabel command = new JLabel(rowModel.getLabel(), SwingConstants.LEFT);
             // 2. 设置回显
             JTextField textField = new JTextField();
             textField.setText(rowModel.getValue());
@@ -62,7 +59,6 @@ public class ChatGPTConfig implements Configurable {
             JButton systemBtn = new JButton(rowModel.getBtn());
             // 设置Action
             systemBtn.addActionListener(new ToolsSettingActionListener(textField, this));
-
             jPanel.add(command);
             jPanel.add(textField);
             jPanel.add(systemBtn);

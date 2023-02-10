@@ -1,9 +1,9 @@
 package com.xiaobaicai.toolwindow;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 
 import com.xiaobaicai.listener.ChatGPTButtonActionListener;
+import com.xiaobaicai.listener.ChatGPTButtonChangeListener;
 
 public class ChatGPTWindow {
     private JTabbedPane tabbedPane1;
@@ -22,6 +22,7 @@ public class ChatGPTWindow {
     public ChatGPTWindow() {
         // 添加按钮监听器
         submitButton.addActionListener(new ChatGPTButtonActionListener(this));
+        submitButton.addChangeListener(new ChatGPTButtonChangeListener(this));
     }
 
     public JTabbedPane getTabbedPane1() {
@@ -52,8 +53,12 @@ public class ChatGPTWindow {
         return submitButton;
     }
 
-    public JTextArea getTranslateTextArea() {
+    public JTextArea getAnwserTextArea() {
         return anwserTextArea;
+    }
+
+    public JButton getSubmitButton() {
+        return submitButton;
     }
 
 }

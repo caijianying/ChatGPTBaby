@@ -4,14 +4,14 @@
     <vendor url="https://blog.caijy.top/" email="XiaoBaiCai5811@163.com"/>
 
     <description><![CDATA[
-        This is a lightweight Idea plug-in that operate json.
+        As you can see, it is a baby, but it is growing rapidly.
         <br/>
     ]]></description>
+    <vendor>小白菜</vendor>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
-    <depends>com.intellij.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationConfigurable parentId="tools" instance="com.xiaobaicai.config.ChatGPTConfig"
@@ -19,7 +19,7 @@
                                  displayName="ChatGPTBaby"/>
         <!--数据持久化扩展点-->
         <applicationService serviceImplementation="com.xiaobaicai.cache.ChatGPTCache"/>
-        <toolWindow id="chatGpt" anchor="right" factoryClass="com.xiaobaicai.extension.ChatGPTToolsWindow"/>
+        <toolWindow id="ChatGPTBaby" anchor="right" factoryClass="com.xiaobaicai.extension.ChatGPTToolsWindow"/>
     </extensions>
 
 
