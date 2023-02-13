@@ -47,14 +47,15 @@ public class ChatGPTButtonActionListener extends AbstractAction {
         String bodyTpls = "{\n"
             + "  \"model\": \"text-davinci-003\",\n"
             + "  \"prompt\": \"%s\",\n"
-            + "  \"temperature\": 0,\n"
+            + "  \"temperature\": 1,\n"
             + "  \"max_tokens\": 1000\n"
             + "}";
         HttpResponse execute;
         try {
-             execute = post.timeout(10_000).auth(String.format("Bearer %s", ChatGPTCache.getInstance().openAiAuthKey)).body(
-                String.format(bodyTpls, originalText)).execute();
-        }catch (HttpException ex){
+            execute = post.timeout(10_000).auth(String.format("Bearer %s", ChatGPTCache.getInstance().openAiAuthKey))
+                .body(
+                    String.format(bodyTpls, originalText)).execute();
+        } catch (HttpException ex) {
             MessageUtil.error("请求服务器失败！");
             return;
         }
@@ -62,7 +63,16 @@ public class ChatGPTButtonActionListener extends AbstractAction {
         if (execute.isOk()) {
             TextCompletionModel model = JSON.parseObject(execute.body(), TextCompletionModel.class);
             List<Choice> choices = model.getChoices();
-            window.getAnwserTextArea().setText(CollectionUtil.isEmpty(choices) ? "" : choices.get(0).getText());
+            String text = "";
+            if (CollectionUtil.isNotEmpty(choices)) {
+                String[] strs = choices.get(0).getText().split("\n\n");
+                if (strs.length > 1) {
+                    text = strs[1];
+                } else {
+                    text = strs[0];
+                }
+            }
+            window.getAnwserTextArea().setText(text);
         } else {
             ErrorModel model = JSON.parseObject(execute.body(), ErrorModel.class);
             window.getAnwserTextArea().setText(model.getMessage());

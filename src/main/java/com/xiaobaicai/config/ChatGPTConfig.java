@@ -27,24 +27,54 @@ public class ChatGPTConfig implements Configurable {
 
     List<JTextField> textFieldList = Lists.newArrayList();
 
-    private static final int column = 3;
+    private static final int column = 1;
 
-    private JPanel jPanel;
+    private final JPanel jPanel;
     private JLabel jLabel;
     private JButton commandBtn;
+    private JTextField authKey;
+    private static final String authKeyPlaceHolder = "请输入OpenAI官网密钥。登录OpenAI 打开 https://platform.openai.com/account/api-keys";
 
     List<SettingsRowModel> configItems = Lists.newArrayList();
 
     public ChatGPTConfig() {
-        int row = 18;
+        int row = 15;
         jPanel = new JPanel(new GridLayout(row, column));
 
         SettingsRowModel openAIRowModel = new SettingsRowModel();
-        openAIRowModel.setLabel("官网密钥");
+        openAIRowModel.setLabel("OpenAI官网密钥");
         openAIRowModel.setValue(ChatGPTCache.getInstance().openAiAuthKey);
         openAIRowModel.setBtn("清空");
         configItems.add(openAIRowModel);
 
+        // 官网API KEY
+        //JLabel label = new JLabel(openAIRowModel.getLabel(), SwingConstants.LEFT);
+        //this.jPanel.add(label);
+
+        // 创建authKey文本框
+        this.authKey = new JTextField();
+        this.authKey.setText(authKeyPlaceHolder);
+        this.authKey.setForeground(JBColor.GRAY);
+        this.authKey.addFocusListener(new TextFieldListener(this.authKey, authKeyPlaceHolder));
+        this.jPanel.add(authKey);
+
+        textFieldList.add(this.authKey);
+        // 计算缺省行
+        int restRow = (row - configItems.size()) * column;
+        for (int i = 0; i < restRow; i++) {
+            jPanel.add(new JLabel());
+        }
+    }
+
+    /**
+     * 设置多列
+     *
+     * @param row:
+     * @return
+     * @author liguang
+     * @date 2023/2/13 11:50 上午
+     **/
+    private void buildMultiColumns(int row) {
         configItems.stream().forEach(rowModel -> {
             // 拿到各个命令的展示信息
             // 1. 设置命令行
@@ -95,12 +125,12 @@ public class ChatGPTConfig implements Configurable {
         }
     }
 
-    public JPanel getjPanel() {
-        return jPanel;
+    public JTextField getAuthKey() {
+        return authKey;
     }
 
-    public void setjPanel(JPanel jPanel) {
-        this.jPanel = jPanel;
+    public JPanel getjPanel() {
+        return jPanel;
     }
 
     public JLabel getjLabel() {
