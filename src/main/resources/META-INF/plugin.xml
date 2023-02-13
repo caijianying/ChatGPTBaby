@@ -4,6 +4,7 @@
     <vendor url="https://blog.caijy.top/" email="XiaoBaiCai5811@163.com"/>
 
     <description><![CDATA[
+        This is a ChatGPT tool plugin. You just need to input the API Key provided by OpenAI, and you can have a conversation with ChatGPT.
         As you can see, it is a baby, but it is growing rapidly.
         <br/>
     ]]></description>
@@ -12,6 +13,19 @@
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
+
+    <change-notes><![CDATA[
+    <h3>V20220106</h3>
+    <ul>
+        <li>Support MVC, Spring, Dubbo link tracing</li>
+        <li>You can view trace links in an independent window</li>
+        <li>Parameter configuration of idea plugin is supported：Preferences -> tools -> Service Invocation Monitor</li>
+    </ul>
+
+    ]]>
+    </change-notes>
+
+
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationConfigurable parentId="tools" instance="com.xiaobaicai.config.ChatGPTConfig"

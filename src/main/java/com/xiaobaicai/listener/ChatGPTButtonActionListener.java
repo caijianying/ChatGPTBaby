@@ -65,11 +65,9 @@ public class ChatGPTButtonActionListener extends AbstractAction {
             List<Choice> choices = model.getChoices();
             String text = "";
             if (CollectionUtil.isNotEmpty(choices)) {
-                String[] strs = choices.get(0).getText().split("\n\n");
-                if (strs.length > 1) {
-                    text = strs[1];
-                } else {
-                    text = strs[0];
+                text = choices.get(0).getText();
+                if (choices.get(0).getText().startsWith("?")) {
+                    text = choices.get(0).getText().substring(1);
                 }
             }
             window.getAnwserTextArea().setText(text);
