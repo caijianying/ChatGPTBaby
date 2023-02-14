@@ -15,11 +15,10 @@
     <depends>com.intellij.modules.platform</depends>
 
     <change-notes><![CDATA[
-    <h3>V20220106</h3>
+    <h3>20230213</h3>
     <ul>
-        <li>Support MVC, Spring, Dubbo link tracing</li>
-        <li>You can view trace links in an independent window</li>
-        <li>Parameter configuration of idea plugin is supported：Preferences -> tools -> Service Invocation Monitor</li>
+         <li>Supports the ChatGPT chat window. (支持ChatGPT聊天窗口)</li>
+         <li>The supporting configuration about OpenAI's API KEY， Preferences -> settings -> ChatGPTBaby (支持配置OpenAI API KEY， Preferences -> settings -> ChatGPTBaby)
     </ul>
 
     ]]>
