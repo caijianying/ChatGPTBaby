@@ -6,6 +6,7 @@
     <description><![CDATA[
         This is a ChatGPT tool plugin. You just need to input the API Key provided by OpenAI, and you can have a conversation with ChatGPT.
         As you can see, it is a baby, but it is growing rapidly.
+        <br/>plugin address：<a href="https://github.com/caijianying/ChatGPTBaby">https://github.com/caijianying/ChatGPTBaby</a>
         <br/>
     ]]></description>
     <vendor>小白菜</vendor>
@@ -15,7 +16,7 @@
     <depends>com.intellij.modules.platform</depends>
 
     <change-notes><![CDATA[
-    <h3>20230213</h3>
+    <h3>20230215</h3>
     <ul>
          <li>Supports the ChatGPT chat window. (支持ChatGPT聊天窗口)</li>
          <li>The supporting configuration about OpenAI's API KEY， Preferences -> settings -> ChatGPTBaby (支持配置OpenAI API KEY， Preferences -> settings -> ChatGPTBaby)
