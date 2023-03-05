@@ -8,6 +8,6 @@ def getCurrentVersion() {
 
 ext {
     plugin = [
-            version              : getCurrentVersion()
+            version: getCurrentVersion()
     ]
 }

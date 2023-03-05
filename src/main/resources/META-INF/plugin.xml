@@ -34,6 +34,7 @@
         <!--数据持久化扩展点-->
         <applicationService serviceImplementation="com.xiaobaicai.cache.ChatGPTCache"/>
         <toolWindow id="ChatGPTBaby" anchor="right" factoryClass="com.xiaobaicai.extension.ChatGPTToolsWindow"/>
+        <toolWindow id="ChatGPTBabyV1" anchor="right" factoryClass="com.xiaobaicai.extension.ChatGPTBabyToolsWindow"/>
     </extensions>
 
 

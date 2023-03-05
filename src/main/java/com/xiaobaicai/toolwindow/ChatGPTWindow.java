@@ -4,7 +4,9 @@ import javax.swing.*;
 
 import com.xiaobaicai.listener.ChatGPTButtonActionListener;
 import com.xiaobaicai.listener.ChatGPTButtonChangeListener;
+import lombok.Data;
 
+@Data
 public class ChatGPTWindow {
     private JTabbedPane tabbedPane1;
     private JPanel mainPanel;
@@ -24,41 +26,4 @@ public class ChatGPTWindow {
         submitButton.addActionListener(new ChatGPTButtonActionListener(this));
         submitButton.addChangeListener(new ChatGPTButtonChangeListener(this));
     }
-
-    public JTabbedPane getTabbedPane1() {
-        return tabbedPane1;
-    }
-
-    public JPanel getMainPanel() {
-        return mainPanel;
-    }
-
-    public JPanel getTranslatorPanel() {
-        return translatorPanel;
-    }
-
-    public JComboBox<String> getComboBox1() {
-        return comboBox1;
-    }
-
-    public JTextArea getOriginalTextArea() {
-        return originalTextArea;
-    }
-
-    public JComboBox<String> getComboBox2() {
-        return comboBox2;
-    }
-
-    public JButton getTranslateButton() {
-        return submitButton;
-    }
-
-    public JTextArea getAnwserTextArea() {
-        return anwserTextArea;
-    }
-
-    public JButton getSubmitButton() {
-        return submitButton;
-    }
-
 }
