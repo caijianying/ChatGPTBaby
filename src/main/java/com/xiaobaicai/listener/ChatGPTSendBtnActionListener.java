@@ -1,5 +1,6 @@
 package com.xiaobaicai.listener;
 
+import com.xiaobaicai.toolwindow.ChatDemoWindow;
 import com.xiaobaicai.toolwindow.ChatGPTBabyWindow;
 
 import javax.swing.*;
@@ -12,9 +13,9 @@ import java.awt.event.ActionEvent;
  */
 public class ChatGPTSendBtnActionListener extends AbstractAction {
 
-    private ChatGPTBabyWindow window;
+    private ChatDemoWindow window;
 
-    public ChatGPTSendBtnActionListener(ChatGPTBabyWindow window) {
+    public ChatGPTSendBtnActionListener(ChatDemoWindow window) {
         this.window = window;
     }
 

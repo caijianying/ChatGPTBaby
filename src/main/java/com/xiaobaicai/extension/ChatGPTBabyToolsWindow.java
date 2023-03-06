@@ -5,6 +5,7 @@ import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowFactory;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
+import com.xiaobaicai.toolwindow.ChatDemoWindow;
 import com.xiaobaicai.toolwindow.ChatGPTBabyWindow;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,9 +22,9 @@ public class ChatGPTBabyToolsWindow implements ToolWindowFactory {
         // 创建我们的工具栏界面
         // TranslatorNote note = new TranslatorNote();
         // table = note.getTable();
-        ChatGPTBabyWindow chatGPTWindow = new ChatGPTBabyWindow();
+        ChatDemoWindow chatGPTWindow = new ChatDemoWindow();
         // 在界面工厂中创建翻译插件的界面
-        Content content = contentFactory.createContent(chatGPTWindow.getChatPane(), "", false);
+        Content content = contentFactory.createContent(chatGPTWindow.getMainPanel(), "", false);
         // 将被界面工厂代理后创建的content，添加到工具栏窗口管理器中
         toolWindow.getContentManager().addContent(content);
     }
