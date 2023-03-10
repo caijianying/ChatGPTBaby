@@ -1,9 +1,14 @@
 package com.xiaobaicai.listener;
 
+import com.xiaobaicai.cache.ChatGPTCache;
+import com.xiaobaicai.model.ChatGPTSwingWorker;
 import com.xiaobaicai.toolwindow.ChatDemoWindow;
-import com.xiaobaicai.toolwindow.ChatGPTBabyWindow;
+import com.xiaobaicai.util.HttpUtl;
+import com.xiaobaicai.util.MessageUtil;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
+
 import java.awt.event.ActionEvent;
 
 /**
@@ -21,8 +26,16 @@ public class ChatGPTSendBtnActionListener extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String text = this.window.getSendText().getText();
-        System.out.println("ChatGPTSendBtnActionListener.actionPerformed: " + text);
-        this.window.showHis();
+        String authKey = ChatGPTCache.getInstance().openAiAuthKey;
+        if (StringUtils.isBlank(authKey)) {
+            MessageUtil.infoOpenToolWindow("请先配置密钥！");
+            return;
+        }
+        String originalText = this.window.getSendText().getText();
+        System.out.println("ChatGPTSendBtnActionListener.actionPerformed: " + originalText);
+        String chatGPTResp = HttpUtl.getChatGPTResp3_5(originalText);
+        System.out.println("getChatGPT3_5Resp:" + chatGPTResp);
+        this.window.getSendText().setText(null);
+        new ChatGPTSwingWorker(this.window, originalText,chatGPTResp).execute();
     }
 }

@@ -53,8 +53,8 @@ public class ChatGPTConfig implements Configurable {
 
         // 创建authKey文本框
         this.authKey = new JTextField();
-        this.authKey.setText(authKeyPlaceHolder);
         this.authKey.setForeground(JBColor.GRAY);
+        this.authKey.setText(authKeyPlaceHolder);
         this.authKey.addFocusListener(new TextFieldListener(this.authKey, authKeyPlaceHolder));
         this.jPanel.add(authKey);
 
@@ -121,7 +121,9 @@ public class ChatGPTConfig implements Configurable {
     public void apply() {
         if (!textFieldList.isEmpty()) {
             JTextField textField = textFieldList.get(0);
-            ChatGPTCache.getInstance().openAiAuthKey = textField.getText();
+            if (!authKeyPlaceHolder.equals(textField.getText())){
+                ChatGPTCache.getInstance().openAiAuthKey = textField.getText();
+            }
         }
     }
 

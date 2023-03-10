@@ -41,7 +41,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="4275a" class="javax.swing.JTextArea" binding="historyTextArea">
+          <component id="91fae" class="javax.swing.JTextPane" binding="historyTextPane">
             <constraints/>
             <properties/>
           </component>
