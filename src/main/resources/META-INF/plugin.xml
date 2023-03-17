@@ -16,6 +16,12 @@
     <depends>com.intellij.modules.platform</depends>
 
     <change-notes><![CDATA[
+    <h3>20230317</h3>
+    <ul>
+         <li>The chat toolWindow has been greatly adjusted. (ChatGPT聊天窗口大调整)</li>
+         <li>Supports gpt-3.5-turbo，plugin address has information about this  (支持gpt-3.5-turbo,具体步骤可参考插件地址)
+    </ul>
+
     <h3>20230215</h3>
     <ul>
          <li>Supports the ChatGPT chat window. (支持ChatGPT聊天窗口)</li>
