@@ -33,9 +33,10 @@ public class ChatGPTSendBtnActionListener extends AbstractAction {
         }
         String originalText = this.window.getSendText().getText();
         System.out.println("ChatGPTSendBtnActionListener.actionPerformed: " + originalText);
-        String chatGPTResp = HttpUtl.getChatGPTResp3_5(originalText);
-        System.out.println("getChatGPT3_5Resp:" + chatGPTResp);
+        new ChatGPTSwingWorker(this.window, originalText, null).execute();
+        String chatGPTResp = HttpUtl.getChatGPT_3_5_Turbo(originalText);
+        System.out.println("getChatGPT_3_5_TurboResp:" + chatGPTResp);
         this.window.getSendText().setText(null);
-        new ChatGPTSwingWorker(this.window, originalText,chatGPTResp).execute();
+        new ChatGPTSwingWorker(this.window, null, chatGPTResp).execute();
     }
 }

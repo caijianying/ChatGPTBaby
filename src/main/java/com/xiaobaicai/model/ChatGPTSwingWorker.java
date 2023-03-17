@@ -32,13 +32,16 @@ public class ChatGPTSwingWorker extends SwingWorker<String, String> {
 
     @Override
     protected String doInBackground() throws InterruptedException {
-        setProgress(1);
-        publish(String.format("%s：%s \n", "你", message));
+        if (this.message !=null){
+            setProgress(1);
+            publish(String.format("%s：%s \n", "你", this.message));
+        }
 
         TimeUnit.SECONDS.sleep(1);
-        if (resp != null) {
+
+        if (this.resp != null) {
             setProgress(2);
-            publish(String.format("%s：%s \n", "AI", resp));
+            publish(String.format("%s：%s \n", "AI", this.resp));
         }
 
         return "OK！";
