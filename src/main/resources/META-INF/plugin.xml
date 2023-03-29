@@ -8,6 +8,8 @@
         As you can see, it is a baby, but it is growing rapidly.
         <br/>plugin address：<a href="https://github.com/caijianying/ChatGPTBaby">https://github.com/caijianying/ChatGPTBaby</a>
         <br/>
+        <h4>Please note that this plugin is no longer maintained. If you require its functionality, you may want to try my new plugin instead. Whether you're a beginner or an experienced developer, this plugin can save you a lot of time and effort. Download and try it out now!If you have any questions or suggestions about its use, please feel free to contact me by email.</h4>
+        <h4/>new plugin address：<a href="https://plugins.jetbrains.com/plugin/21314-chatgpt-coding">https://plugins.jetbrains.com/plugin/21314-chatgpt-coding</h4>
     ]]></description>
     <vendor>小白菜</vendor>
 
@@ -30,7 +32,6 @@
 
     ]]>
     </change-notes>
-
 
 
     <extensions defaultExtensionNs="com.intellij">

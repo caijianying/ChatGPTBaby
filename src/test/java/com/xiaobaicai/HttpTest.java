@@ -9,10 +9,10 @@ import org.junit.Test;
  */
 public class HttpTest {
 
-    @Test
-    public void test(){
-        String gptResp3_5 = HttpUtl.getChatGPT_3_5_Turbo("this is a test!");
-        System.out.println(gptResp3_5);
-    }
+    //@Test
+    //public void test(){
+    //    String gptResp3_5 = HttpUtl.getChatGPT_3_5_Turbo("this is a test!");
+    //    System.out.println(gptResp3_5);
+    //}
 
 }

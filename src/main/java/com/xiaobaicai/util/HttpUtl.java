@@ -6,6 +6,7 @@ import java.util.Map;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+import cn.hutool.core.io.IORuntimeException;
 import cn.hutool.http.HttpException;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
@@ -39,15 +40,17 @@ public class HttpUtl {
                     String.format(bodyTpls, question)).execute();
             str = execute.body();
         } catch (HttpException ex) {
-            MessageUtil.error("请求服务器失败！");
+            MessageUtil.error(ex.getMessage().contains("timed out") ? "请求服务器超时！" : "请求服务器失败！");
+            return null;
+        } catch (IORuntimeException e) {
+            MessageUtil.error(e.getMessage().contains("timed out") ? "请求服务器超时！" : "请求服务器失败！");
             return null;
         } catch (Throwable e) {
             e.printStackTrace();
             return null;
         }
 
-
-        if (JSONUtil.isTypeJSON(str)){
+        if (JSONUtil.isTypeJSON(str)) {
             ChatGPT3_5ErrorModel gpt3_5ErrorModel = JSONObject.parseObject(str, ChatGPT3_5ErrorModel.class);
             if (gpt3_5ErrorModel != null) {
                 return gpt3_5ErrorModel.getError().getMessage();

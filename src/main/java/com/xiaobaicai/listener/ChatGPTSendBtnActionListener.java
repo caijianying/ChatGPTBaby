@@ -31,12 +31,19 @@ public class ChatGPTSendBtnActionListener extends AbstractAction {
             MessageUtil.infoOpenToolWindow("请先配置密钥！");
             return;
         }
+        if (!window.getSendBtn().isEnabled()) {
+            MessageUtil.info("请稍后再试！");
+        }
         String originalText = this.window.getSendText().getText();
         System.out.println("ChatGPTSendBtnActionListener.actionPerformed: " + originalText);
         new ChatGPTSwingWorker(this.window, originalText, null).execute();
-        String chatGPTResp = HttpUtl.getChatGPT_3_5_Turbo(originalText);
-        System.out.println("getChatGPT_3_5_TurboResp:" + chatGPTResp);
-        this.window.getSendText().setText(null);
-        new ChatGPTSwingWorker(this.window, null, chatGPTResp).execute();
+        new Thread(() -> {
+            window.getSendBtn().setEnabled(true);
+            String chatGPTResp = HttpUtl.getChatGPT_3_5_Turbo(originalText);
+            System.out.println("getChatGPT_3_5_TurboResp:" + chatGPTResp);
+            this.window.getSendText().setText(null);
+            new ChatGPTSwingWorker(this.window, null, chatGPTResp).execute();
+            window.getSendBtn().setEnabled(false);
+        }).start();
     }
 }
