@@ -1,15 +1,16 @@
 <idea-plugin>
     <id>com.xiaobaicai</id>
     <name>ChatGPTBaby</name>
-    <vendor url="https://blog.caijy.top/" email="XiaoBaiCai5811@163.com"/>
+    <vendor email="xiaobaicai088@gmail.com" url="https://github.com/caijianying"/>
 
     <description><![CDATA[
         This is a ChatGPT tool plugin. You just need to input the API Key provided by OpenAI, and you can have a conversation with ChatGPT.
         As you can see, it is a baby, but it is growing rapidly.
         <br/>plugin address：<a href="https://github.com/caijianying/ChatGPTBaby">https://github.com/caijianying/ChatGPTBaby</a>
         <br/>
-        <h4>Please note that this plugin is no longer maintained. If you require its functionality, you may want to try my new plugin instead. Whether you're a beginner or an experienced developer, this plugin can save you a lot of time and effort. Download and try it out now!If you have any questions or suggestions about its use, please feel free to contact me by email.</h4>
-        <h4/>new plugin address：<a href="https://plugins.jetbrains.com/plugin/21314-chatgpt-coding">https://plugins.jetbrains.com/plugin/21314-chatgpt-coding</h4>
+        <h3>Thank you for downloading and supporting this plugin. However, as it is no longer being maintained, this will be the last updated version. </h3>
+        <h3>If you are interested in ChatGPT, I suggest trying out my new plugin. Whether you are a beginner or an experienced developer, this plugin can save you time and energy in problem-solving. Thank you for considering it again. If you have any questions or suggestions regarding its usage, please feel free to contact me via email.</h3>
+        <h3/>new plugin address：<a href="https://plugins.jetbrains.com/plugin/21314-chatgpt-coding">https://plugins.jetbrains.com/plugin/21314-chatgpt-coding</h3>
     ]]></description>
     <vendor>小白菜</vendor>
 
@@ -18,6 +19,11 @@
     <depends>com.intellij.modules.platform</depends>
 
     <change-notes><![CDATA[
+    <h3>20230330</h3>
+    <ul>
+         <li>Interface stalling issue fixed. (界面卡顿问题修复)</li>
+    </ul>
+
     <h3>20230317</h3>
     <ul>
          <li>The chat toolWindow has been greatly adjusted. (ChatGPT聊天窗口大调整)</li>
