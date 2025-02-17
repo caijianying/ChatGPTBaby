@@ -51,7 +51,7 @@ public class MessageUtil {
         notification.addAction(new NotificationAction("前往配置") {
             @Override
             public void actionPerformed(@NotNull AnActionEvent e, @NotNull Notification notification) {
-                ShowSettingsUtil.getInstance().showSettingsDialog(e.getProject(), "Tools.ChatGPTBaby");
+                ShowSettingsUtil.getInstance().showSettingsDialog(e.getProject(), "Tools.CodeBaby");
             }
         });
         Notifications.Bus.notify(notification, null);

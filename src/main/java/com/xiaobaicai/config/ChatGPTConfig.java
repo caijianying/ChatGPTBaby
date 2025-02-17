@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public class ChatGPTConfig implements Configurable {
 
-    public static final String PLUGIN_NAME = "ChatGPTBaby";
+    public static final String PLUGIN_NAME = "CodeBaby";
 
     List<JTextField> textFieldList = Lists.newArrayList();
 
